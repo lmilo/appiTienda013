@@ -1,16 +1,17 @@
 const mongoose = require('../config/database');
 
 const schemaProducto = new mongoose.Schema({
-    refencia:{
+    referencia:{
         type: [Number,"la referencia debe de ser entera"],
         required: [true, "la referencia esr obligatoria"],
+        unique: true,
     },
     nombre:{
         type: [String,"El nombre debe de ser texto"],
         required: [true, "el nombre es obligatorio"],
     },
     precio:{
-        type: [Decimal128, "El precio debe de ser numerico"],
+        type: [mongoose.Types.Decimal128, "El precio debe de ser numerico"],
         default: 0,
         min: [0.0, "los precios no pueden ser negativos"],
     },
